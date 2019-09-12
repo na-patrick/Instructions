@@ -13,7 +13,7 @@ In my case, I had to "Erase Ubuntu 18.04.1 LTS and reinstall".
 
 ## 2. CUDA installation
 
-Install dependencies for CUDA: `sudo apt-get update`, `sudo apt-get upgrade`, `sudo apt-get install linux-headers-$(uname -r)`, and `sudo apt-get build-essential`  
+Install dependencies for CUDA: `sudo apt-get update`, `sudo apt-get upgrade`, `sudo apt-get install linux-headers-$(uname -r)`, and `sudo apt-get install build-essential`  
 Disable Nouveau drivers by creating a file `/etc/modprobe.d/blacklist-nouveau.conf` with the following contents:  
 `blacklist nouveau`  
 `options nouveau modeset=0`
