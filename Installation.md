@@ -13,14 +13,14 @@ In my case, I had to "Erase Ubuntu 18.04.1 LTS and reinstall".
 
 ## 2. CUDA installation
 
-Install dependencies for CUDA: `sudo apt-get update`, `sudo apt-get upgrade`, `sudo apt-get install linux-headers-$(uname -r)`, and `sudo apt-get install build-essential`  
+Install dependencies for CUDA: `sudo apt-get update`, `sudo apt-get upgrade`, `sudo apt-get install linux-headers-$(uname -r)`, and `sudo apt-get build-essential`  
 Disable Nouveau drivers by creating a file `/etc/modprobe.d/blacklist-nouveau.conf` with the following contents:  
 `blacklist nouveau`  
 `options nouveau modeset=0`
 
 I didn't need to do this, but CUDA also asks to regenerate kernel initfamfs: `sudo update-initramfs -u`  
 
-[Download CUDA](http://old-releases.ubuntu.com/releases/18.04.1/).  
+[Download CUDA](https://developer.nvidia.com/cuda-10.0-download-archive).  
 Download the runfile associated with Ubuntu 18.04.  
 Run the installation file: `sudo sh cuda-10.0.130_410.48_linux.run`  
 
@@ -36,7 +36,7 @@ Samples location: default
 
 Add the following to `~/.profile`:  
 `export PATH=/usr/local/cuda/bin:/usr/local/cuda/NsightCompute-1.0${PATH:+:${PATH}}`  
-`export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}`  
+`export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}`  
 
 Restart the computer.  
 
@@ -73,11 +73,13 @@ Install git: `sudo apt-get install git`
 Clone the git repo: `git clone https://github.com/NeuronAware/VisionAware.git`  
 Open in Qt Creator, turn off "shadow build" in build options, and run.  
 
-## 8. cuDNN installation
+## 8. CuDNN installation
+```sh
+sudo dpkg -i <downloaded cudnn file.deb>
+```
 
-[Download cuDNN](https://developer.nvidia.com/rdp/cudnn-download)  
-Navigate to the tarfile and untar `tar -xzvf`  
-Copy the files and give file permissions:
-`sudo cp cuda/include/cudnn.h /usr/local/cuda/include`  
-`sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64`  
-`sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*`  
+## 9. Make sure `PATH` and `LD_LIBRARY_PATH` environment variables are correctly set
+```sh
+export PATH=.:/usr/local/cuda/bin:/usr/local/cuda/NsightCompute-1.0${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=.:/usr/local/lib:/opt/pylon5/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
