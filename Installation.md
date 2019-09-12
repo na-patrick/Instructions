@@ -72,3 +72,12 @@ Install glog with: `sudo apt install libgoogle-glog-dev`
 Install git: `sudo apt-get install git`  
 Clone the git repo: `git clone https://github.com/NeuronAware/VisionAware.git`  
 Open in Qt Creator, turn off "shadow build" in build options, and run.  
+
+## 8. cuDNN installation
+
+[Download cuDNN](https://developer.nvidia.com/rdp/cudnn-download)  
+Navigate to the tarfile and untar `tar -xzvf`  
+Copy the files and give file permissions:
+`sudo cp cuda/include/cudnn.h /usr/local/cuda/include`  
+`sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64`  
+`sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*`  
