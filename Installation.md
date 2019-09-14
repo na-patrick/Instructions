@@ -83,6 +83,12 @@ sudo dpkg -i <downloaded cudnn file.deb>
 export PATH=.:/usr/local/cuda/bin:/usr/local/cuda/NsightCompute-1.0${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=.:/usr/local/lib:/opt/pylon5/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
+In case the system cannot find libraries
+```sh
+visionaware@visionaware-System-Product-Name:~$ more  /etc/ld.so.conf
+include /etc/ld.so.conf.d/*.conf
+/usr/local/cuda/lib64
+```
 
 ## 10. Install Python packages using pip3
 ```sh
