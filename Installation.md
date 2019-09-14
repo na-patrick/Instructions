@@ -83,3 +83,10 @@ sudo dpkg -i <downloaded cudnn file.deb>
 export PATH=.:/usr/local/cuda/bin:/usr/local/cuda/NsightCompute-1.0${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=.:/usr/local/lib:/opt/pylon5/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
+
+## 10. Install tensorflow python package and numpy
+```sh
+pip3 install --user --upgrade tensorflow-gpu==1.13.2
+pip3 install numpy
+```
+
